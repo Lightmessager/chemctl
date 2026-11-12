@@ -1,0 +1,17 @@
+.venv/
+__pycache__/
+.pytest_cache/
+*.egg-info/
+.chemctl/
+*.sqlite3*
+*.dpapi
+*.pem
+*.key
+.env*
+dist/
+build/
+.archify/
+/assets/
+docs/*
+!docs/usage.md
+scripts/smoke_gui.py

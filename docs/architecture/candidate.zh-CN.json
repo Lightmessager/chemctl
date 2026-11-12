@@ -1,0 +1,363 @@
+{
+  "schema_version": 1,
+  "diagram_type": "architecture",
+  "meta": {
+    "title": "chemctl 项目结构",
+    "locale": "zh-CN",
+    "output": "docs/architecture/chemctl-architecture.zh-CN.html",
+    "quality_profile": "showcase",
+    "repository": {
+      "url": "https://github.com/Lightmessager/chemctl.git",
+      "revision": "500437e4be3808daa488390c435adaeb2251627f"
+    }
+  },
+  "components": [
+    {
+      "id": "desktop",
+      "type": "frontend",
+      "label": "桌面 GUI",
+      "sublabel": "gui.py · PySide6",
+      "pos": [
+        40,
+        40
+      ],
+      "size": [
+        180,
+        76
+      ],
+      "tag": "交互式工作台",
+      "sources": [
+        {
+          "path": "src/chemctl/gui.py",
+          "line": 385,
+          "end_line": 410
+        }
+      ]
+    },
+    {
+      "id": "cli",
+      "type": "frontend",
+      "label": "AI 命令行",
+      "sublabel": "cli.py · Typer",
+      "pos": [
+        40,
+        240
+      ],
+      "size": [
+        180,
+        70
+      ],
+      "sources": [
+        {
+          "path": "src/chemctl/cli.py",
+          "line": 163,
+          "end_line": 178
+        }
+      ]
+    },
+    {
+      "id": "http",
+      "type": "backend",
+      "label": "共享 HTTP 客户端",
+      "sublabel": "client.py · httpx",
+      "pos": [
+        350,
+        40
+      ],
+      "size": [
+        180,
+        76
+      ],
+      "sources": [
+        {
+          "path": "src/chemctl/client.py",
+          "line": 12,
+          "end_line": 35
+        }
+      ]
+    },
+    {
+      "id": "api",
+      "type": "backend",
+      "label": "本地 API",
+      "sublabel": "api.py · FastAPI",
+      "pos": [
+        660,
+        40
+      ],
+      "size": [
+        180,
+        76
+      ],
+      "tag": "127.0.0.1:8765",
+      "sources": [
+        {
+          "path": "src/chemctl/api.py",
+          "line": 130,
+          "end_line": 151
+        },
+        {
+          "path": "src/chemctl/api.py",
+          "line": 184,
+          "end_line": 190
+        }
+      ]
+    },
+    {
+      "id": "service",
+      "type": "backend",
+      "label": "业务服务",
+      "sublabel": "service.py · Service",
+      "pos": [
+        660,
+        240
+      ],
+      "size": [
+        180,
+        76
+      ],
+      "tag": "任务 / 批次 / 查询",
+      "sources": [
+        {
+          "path": "src/chemctl/service.py",
+          "line": 216,
+          "end_line": 263
+        },
+        {
+          "path": "src/chemctl/service.py",
+          "line": 277,
+          "end_line": 297
+        }
+      ]
+    },
+    {
+      "id": "store",
+      "type": "database",
+      "label": "持久化与审计",
+      "sublabel": "store.py · SQLite",
+      "pos": [
+        350,
+        240
+      ],
+      "size": [
+        180,
+        76
+      ],
+      "tag": "records + audit",
+      "sources": [
+        {
+          "path": "src/chemctl/store.py",
+          "line": 17,
+          "end_line": 35
+        },
+        {
+          "path": "src/chemctl/store.py",
+          "line": 48,
+          "end_line": 77
+        }
+      ]
+    },
+    {
+      "id": "parser",
+      "type": "backend",
+      "label": "科学输出解析",
+      "sublabel": "parsing.py · cclib",
+      "pos": [
+        660,
+        450
+      ],
+      "size": [
+        180,
+        76
+      ],
+      "tag": "方法 / 混合基组 / ECP",
+      "sources": [
+        {
+          "path": "src/chemctl/parsing.py",
+          "line": 35,
+          "end_line": 60
+        },
+        {
+          "path": "src/chemctl/parsing.py",
+          "line": 139,
+          "end_line": 175
+        }
+      ]
+    },
+    {
+      "id": "outputs",
+      "type": "external",
+      "label": "本地输出与缓存",
+      "sublabel": "ORCA / Gaussian",
+      "pos": [
+        350,
+        450
+      ],
+      "size": [
+        180,
+        76
+      ],
+      "tag": "读取原文与同步结果",
+      "sources": [
+        {
+          "path": "src/chemctl/parsing.py",
+          "line": 53,
+          "end_line": 60
+        },
+        {
+          "path": "src/chemctl/remote_jobs.py",
+          "line": 268,
+          "end_line": 321
+        }
+      ]
+    },
+    {
+      "id": "ssh",
+      "type": "security",
+      "label": "远程任务执行",
+      "sublabel": "remote_jobs.py · SSH",
+      "pos": [
+        970,
+        240
+      ],
+      "size": [
+        200,
+        76
+      ],
+      "tag": "提交 / 监控 / 同步",
+      "sources": [
+        {
+          "path": "src/chemctl/remote_jobs.py",
+          "line": 136,
+          "end_line": 197
+        },
+        {
+          "path": "src/chemctl/remote_jobs.py",
+          "line": 200,
+          "end_line": 253
+        },
+        {
+          "path": "src/chemctl/remote_jobs.py",
+          "line": 268,
+          "end_line": 321
+        }
+      ]
+    },
+    {
+      "id": "linux",
+      "type": "external",
+      "label": "远程 Linux / PBS",
+      "sublabel": "adapters.py · Paramiko",
+      "pos": [
+        970,
+        450
+      ],
+      "size": [
+        200,
+        76
+      ],
+      "tag": "明确脚本与任务目录",
+      "sources": [
+        {
+          "path": "src/chemctl/adapters.py",
+          "line": 10,
+          "end_line": 48
+        },
+        {
+          "path": "src/chemctl/remote_jobs.py",
+          "line": 175,
+          "end_line": 197
+        }
+      ]
+    }
+  ],
+  "connections": [
+    {
+      "id": "gui-client",
+      "from": "desktop",
+      "to": "http",
+      "label": "后台线程请求",
+      "variant": "emphasis"
+    },
+    {
+      "id": "cli-client",
+      "from": "cli",
+      "to": "http",
+      "label": "命令请求"
+    },
+    {
+      "id": "http-api",
+      "from": "http",
+      "to": "api",
+      "label": "HTTP / JSON",
+      "variant": "emphasis"
+    },
+    {
+      "id": "api-service",
+      "from": "api",
+      "to": "service",
+      "label": "路由 / 后台批次",
+      "variant": "emphasis"
+    },
+    {
+      "id": "service-store",
+      "from": "service",
+      "to": "store",
+      "label": "读写 / 审计"
+    },
+    {
+      "id": "service-parser",
+      "from": "service",
+      "to": "parser",
+      "label": "批次逐文件解析"
+    },
+    {
+      "id": "parser-file",
+      "from": "parser",
+      "to": "outputs",
+      "label": "读取原文"
+    },
+    {
+      "id": "service-ssh",
+      "from": "service",
+      "to": "ssh",
+      "label": "提交 / 刷新 / 同步"
+    },
+    {
+      "id": "ssh-linux",
+      "from": "ssh",
+      "to": "linux",
+      "label": "SSH / PBS / SFTP",
+      "variant": "security"
+    }
+  ],
+  "cards": [
+    {
+      "dot": "cyan",
+      "title": "计算与结果流程",
+      "items": [
+        "GUI 与 CLI 通过共享 HTTP 客户端访问本地 API。",
+        "Service 协调任务、解析批次、索引与查询。",
+        "远程模块用 SSH 提交 PBS 脚本，查询状态并以 SFTP 同步结果。"
+      ]
+    },
+    {
+      "dot": "amber",
+      "title": "数据与认证边界",
+      "items": [
+        "同步文件写入本地缓存，再交给解析批次；此支路在总览中省略。",
+        "独立任务目录与回执用于控制提交；未知状态不自动重提。",
+        "SSH 私钥可由 Windows DPAPI 加密保存；密码不保存。"
+      ]
+    },
+    {
+      "dot": "slate",
+      "title": "范围与科学限制",
+      "items": [
+        "沿用原项目结构图布局，更新为当前实现；省略启动器和密钥管理内部细节。",
+        "混合基组与 ECP 按输出证据识别，不按元素猜测。",
+        "正常终止、解析完成和科学收敛是不同状态；demo 不执行计算。"
+      ]
+    }
+  ]
+}

@@ -14,4 +14,12 @@ build/
 /assets/
 docs/*
 !docs/usage.md
+!docs/architecture/
+docs/architecture/*
+!docs/architecture/candidate.*.json
+!docs/architecture/chemctl-architecture.en.html
+!docs/architecture/chemctl-architecture.zh-CN.html
+!docs/architecture/chemctl-architecture.en.png
+!docs/architecture/chemctl-architecture.zh-CN.png
 scripts/smoke_gui.py
+skills/**/references/local-environment.md

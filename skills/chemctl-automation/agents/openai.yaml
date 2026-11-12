@@ -1,0 +1,4 @@
+interface:
+  display_name: "chemctl 计算化学自动化"
+  short_description: "使用 chemctl 自动提交量化任务、监控队列、同步并解析科学结果"
+  default_prompt: "使用 $chemctl-automation 完成我指定的计算化学流程，复用已有配置并报告可追溯结果。"

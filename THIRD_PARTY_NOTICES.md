@@ -11,3 +11,6 @@ The MIT license for chemctl does not replace their licenses. Consult the install
 
 The application icon was AI-generated for this project. The demonstration output fragments are synthetic.
 No ORCA or Gaussian executable, proprietary manual, real calculation data, server configuration or credential is distributed.
+
+Interactive architecture pages were generated with Archify (MIT). They embed JetBrains Mono font subsets
+under the SIL Open Font License 1.1; the applicable font license is included inside each standalone HTML page.

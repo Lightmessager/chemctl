@@ -1,0 +1,363 @@
+{
+  "schema_version": 1,
+  "diagram_type": "architecture",
+  "meta": {
+    "title": "chemctl project architecture",
+    "locale": "en",
+    "output": "docs/architecture/chemctl-architecture.en.html",
+    "quality_profile": "showcase",
+    "repository": {
+      "url": "https://github.com/Lightmessager/chemctl.git",
+      "revision": "500437e4be3808daa488390c435adaeb2251627f"
+    }
+  },
+  "components": [
+    {
+      "id": "desktop",
+      "type": "frontend",
+      "label": "Desktop GUI",
+      "sublabel": "gui.py · PySide6",
+      "pos": [
+        40,
+        40
+      ],
+      "size": [
+        180,
+        76
+      ],
+      "tag": "Interactive workbench",
+      "sources": [
+        {
+          "path": "src/chemctl/gui.py",
+          "line": 385,
+          "end_line": 410
+        }
+      ]
+    },
+    {
+      "id": "cli",
+      "type": "frontend",
+      "label": "AI / CLI",
+      "sublabel": "cli.py · Typer",
+      "pos": [
+        40,
+        240
+      ],
+      "size": [
+        180,
+        70
+      ],
+      "sources": [
+        {
+          "path": "src/chemctl/cli.py",
+          "line": 163,
+          "end_line": 178
+        }
+      ]
+    },
+    {
+      "id": "http",
+      "type": "backend",
+      "label": "Shared HTTP client",
+      "sublabel": "client.py · httpx",
+      "pos": [
+        350,
+        40
+      ],
+      "size": [
+        180,
+        76
+      ],
+      "sources": [
+        {
+          "path": "src/chemctl/client.py",
+          "line": 12,
+          "end_line": 35
+        }
+      ]
+    },
+    {
+      "id": "api",
+      "type": "backend",
+      "label": "Local API",
+      "sublabel": "api.py · FastAPI",
+      "pos": [
+        660,
+        40
+      ],
+      "size": [
+        180,
+        76
+      ],
+      "tag": "127.0.0.1:8765",
+      "sources": [
+        {
+          "path": "src/chemctl/api.py",
+          "line": 130,
+          "end_line": 151
+        },
+        {
+          "path": "src/chemctl/api.py",
+          "line": 184,
+          "end_line": 190
+        }
+      ]
+    },
+    {
+      "id": "service",
+      "type": "backend",
+      "label": "Application service",
+      "sublabel": "service.py · Service",
+      "pos": [
+        660,
+        240
+      ],
+      "size": [
+        180,
+        76
+      ],
+      "tag": "Jobs / batches / queries",
+      "sources": [
+        {
+          "path": "src/chemctl/service.py",
+          "line": 216,
+          "end_line": 263
+        },
+        {
+          "path": "src/chemctl/service.py",
+          "line": 277,
+          "end_line": 297
+        }
+      ]
+    },
+    {
+      "id": "store",
+      "type": "database",
+      "label": "Storage and audit",
+      "sublabel": "store.py · SQLite",
+      "pos": [
+        350,
+        240
+      ],
+      "size": [
+        180,
+        76
+      ],
+      "tag": "records + audit",
+      "sources": [
+        {
+          "path": "src/chemctl/store.py",
+          "line": 17,
+          "end_line": 35
+        },
+        {
+          "path": "src/chemctl/store.py",
+          "line": 48,
+          "end_line": 77
+        }
+      ]
+    },
+    {
+      "id": "parser",
+      "type": "backend",
+      "label": "Scientific parsing",
+      "sublabel": "parsing.py · cclib",
+      "pos": [
+        660,
+        450
+      ],
+      "size": [
+        180,
+        76
+      ],
+      "tag": "Methods / mixed basis / ECP",
+      "sources": [
+        {
+          "path": "src/chemctl/parsing.py",
+          "line": 35,
+          "end_line": 60
+        },
+        {
+          "path": "src/chemctl/parsing.py",
+          "line": 139,
+          "end_line": 175
+        }
+      ]
+    },
+    {
+      "id": "outputs",
+      "type": "external",
+      "label": "Outputs and cache",
+      "sublabel": "ORCA / Gaussian",
+      "pos": [
+        350,
+        450
+      ],
+      "size": [
+        180,
+        76
+      ],
+      "tag": "Local and synced files",
+      "sources": [
+        {
+          "path": "src/chemctl/parsing.py",
+          "line": 53,
+          "end_line": 60
+        },
+        {
+          "path": "src/chemctl/remote_jobs.py",
+          "line": 268,
+          "end_line": 321
+        }
+      ]
+    },
+    {
+      "id": "ssh",
+      "type": "security",
+      "label": "Remote jobs",
+      "sublabel": "remote_jobs.py · SSH",
+      "pos": [
+        970,
+        240
+      ],
+      "size": [
+        200,
+        76
+      ],
+      "tag": "Submit / monitor / sync",
+      "sources": [
+        {
+          "path": "src/chemctl/remote_jobs.py",
+          "line": 136,
+          "end_line": 197
+        },
+        {
+          "path": "src/chemctl/remote_jobs.py",
+          "line": 200,
+          "end_line": 253
+        },
+        {
+          "path": "src/chemctl/remote_jobs.py",
+          "line": 268,
+          "end_line": 321
+        }
+      ]
+    },
+    {
+      "id": "linux",
+      "type": "external",
+      "label": "Remote Linux / PBS",
+      "sublabel": "adapters.py · Paramiko",
+      "pos": [
+        970,
+        450
+      ],
+      "size": [
+        200,
+        76
+      ],
+      "tag": "Explicit job scripts",
+      "sources": [
+        {
+          "path": "src/chemctl/adapters.py",
+          "line": 10,
+          "end_line": 48
+        },
+        {
+          "path": "src/chemctl/remote_jobs.py",
+          "line": 175,
+          "end_line": 197
+        }
+      ]
+    }
+  ],
+  "connections": [
+    {
+      "id": "gui-client",
+      "from": "desktop",
+      "to": "http",
+      "label": "Worker requests",
+      "variant": "emphasis"
+    },
+    {
+      "id": "cli-client",
+      "from": "cli",
+      "to": "http",
+      "label": "Commands"
+    },
+    {
+      "id": "http-api",
+      "from": "http",
+      "to": "api",
+      "label": "HTTP / JSON",
+      "variant": "emphasis"
+    },
+    {
+      "id": "api-service",
+      "from": "api",
+      "to": "service",
+      "label": "Routes / batches",
+      "variant": "emphasis"
+    },
+    {
+      "id": "service-store",
+      "from": "service",
+      "to": "store",
+      "label": "Read / write"
+    },
+    {
+      "id": "service-parser",
+      "from": "service",
+      "to": "parser",
+      "label": "Parse each file"
+    },
+    {
+      "id": "parser-file",
+      "from": "parser",
+      "to": "outputs",
+      "label": "Read output"
+    },
+    {
+      "id": "service-ssh",
+      "from": "service",
+      "to": "ssh",
+      "label": "Job operations"
+    },
+    {
+      "id": "ssh-linux",
+      "from": "ssh",
+      "to": "linux",
+      "label": "SSH / PBS / SFTP",
+      "variant": "security"
+    }
+  ],
+  "cards": [
+    {
+      "dot": "cyan",
+      "title": "Calculation and result flow",
+      "items": [
+        "GUI and CLI reach the local API through a shared HTTP client.",
+        "Service coordinates jobs, parsing batches, indexing and queries.",
+        "Remote jobs submit PBS scripts over SSH, poll state and sync results via SFTP."
+      ]
+    },
+    {
+      "dot": "amber",
+      "title": "Data and authentication boundaries",
+      "items": [
+        "Synced files enter the local cache, then a parsing batch; this branch is omitted here.",
+        "Per-job directories and receipts protect submission; uncertain jobs are not retried automatically.",
+        "Windows DPAPI can protect SSH private keys; passwords are not stored."
+      ]
+    },
+    {
+      "dot": "slate",
+      "title": "Scope and scientific limits",
+      "items": [
+        "Based on the original layout, updated to current code; launcher and key-management internals are omitted.",
+        "Mixed basis sets and ECPs follow output evidence, not element-based guesses.",
+        "Termination, parsing and scientific convergence are separate; demo jobs perform no computation."
+      ]
+    }
+  ]
+}
